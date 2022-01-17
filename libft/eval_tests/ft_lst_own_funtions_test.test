@@ -1,0 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/23 11:06:12 by mrantil           #+#    #+#             */
+/*   Updated: 2021/11/23 17:18:26 by mrantil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include "libft.h"
+
+int main()
+{
+	t_list	*head;
+	t_list	*more = NULL;
+	t_list	*another = NULL;
+	t_list	*last = NULL;
+
+	head = malloc(sizeof(t_list));
+	if (!head)
+		return (0);	
+	head->content = (char *)"This";
+	head->next = NULL;
+
+	more = malloc(sizeof(t_list));
+	if (!more)
+		return (0);
+	more->content = (char *)"is";
+	more->next = NULL;
+	
+	another = malloc(sizeof(t_list));
+	if (!another)
+		return (0);
+	another->content = (char *)"a";
+	another->next = NULL;
+
+	last = malloc(sizeof(t_list));
+	if (!last)
+		return (0);
+	last->content = (char *)"linked list";
+	last->next = NULL;
+
+	ft_lstnew(head, sizeof(t_list));
+	ft_lstadd(&head, more);
+	ft_lstadd(&head, another);
+	ft_lstaddend(&head, last);
+	ft_lstputstr(&head);
+
+	return 0;
+}

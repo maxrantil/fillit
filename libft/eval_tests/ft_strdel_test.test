@@ -1,0 +1,25 @@
+#include "libft.h"
+#include <stdio.h>
+
+int	main()
+{
+	size_t	size1 = 4;
+	char	*str = "hey";
+
+    str = malloc(sizeof(str) * size1);
+	if (!str)
+		ft_putstr("no malloc\n");
+    ft_bzero(str, size1);
+
+
+	printf("%p\n", &str);
+
+	ft_strdel(&str);
+	if (!str)
+		write(1, "NULL\n", 5);
+	else
+		write(1, "NOT NULL\n", 9);
+	printf("done.\n");
+
+    return 0;	
+}

@@ -1,0 +1,113 @@
+int	square[4];
+square[0] = 0;
+square[1] = 1;
+square[2] = 5;
+square[3] = 6;
+
+int	vertical_i[4];
+vertical_i[0] = 0;
+vertical_i[1] = 5;
+vertical_i[2] = 10;
+vertical_i[3] = 15;
+
+int	horizontal_i[4];
+horizontal_i[0] = 0;
+horizontal_i[1] = 1;
+horizontal_i[2] = 2;
+horizontal_i[3] = 3;
+
+int	z_vertical_left[4];
+z_vertical_left[0] = 0;
+z_vertical_left[1] = 5;
+z_vertical_left[2] = 6;
+z_vertical_left[3] = 11;
+
+int	z_vertical_right[4];
+z_vertical_right[0] = 1;
+z_vertical_right[1] = 5;
+z_vertical_right[2] = 6;
+z_vertical_right[3] = 10;
+
+int	z_horizontal_left[4];
+z_horizontal_left[0] = 0;
+z_horizontal_left[1] = 1;
+z_horizontal_left[2] = 6;
+z_horizontal_left[3] = 7;
+
+int	z_horizontal_right[4];
+z_horizontal_right[0] = 1;
+z_horizontal_right[1] = 2;
+z_horizontal_right[2] = 5;
+z_horizontal_right[3] = 6;
+
+int	l_1r_2d[4];
+l_1r_2d[0] = 0;
+l_1r_2d[1] = 1;
+l_1r_2d[2] = 5;
+l_1r_2d[3] = 10;
+
+int	l_1l_2u[4];
+l_1l_2u[0] = 1;
+l_1l_2u[1] = 6;
+l_1l_2u[2] = 10;
+l_1l_2u[3] = 11;
+
+int	l_1r_2u[4];
+l_1r_2u[0] = 0;
+l_1r_2u[1] = 5;
+l_1r_2u[2] = 10;
+l_1r_2u[3] = 11;
+
+int	l_1l_2d[4];
+l_1l_2d[0] = 0;
+l_1l_2d[1] = 1;
+l_1l_2d[2] = 6;
+l_1l_2d[3] = 11;
+
+int	l_2r_1d[4];
+l_2r_1d[0] = 0;
+l_2r_1d[1] = 1;
+l_2r_1d[2] = 2;
+l_2r_2d[3] = 5;
+
+int	l_2l_1u[4];
+l_2l_1u[0] = 2;
+l_2l_1u[1] = 5;
+l_2l_1u[2] = 6;
+l_2l_1u[3] = 7;
+
+int	l_2r_1u[4];
+l_2r_1u[0] = 0;
+l_2r_1u[1] = 5;
+l_2r_1u[2] = 6;
+l_2r_1u[3] = 7;
+
+int	l_2l_1d[4];
+l_2l_1d[0] = 0;
+l_2l_1d[1] = 1;
+l_2l_1d[2] = 2;
+l_2l_1d[3] = 7;
+
+int	t[4];
+t[0] = 0;
+t[1] = 1;
+t[2] = 2;
+t[3] = 6;
+
+int	flipped_t[4];
+flipped_t[0] = 1;
+flipped_t[1] = 5;
+flipped_t[2] = 6;
+flipped_t[3] = 7;
+
+int	vertical_t_left[4];
+vertical_t_left[0] = 1;
+vertical_t_left[1] = 5;
+vertical_t_left[2] = 6;
+vertical_t_left[3] = 11;
+
+int	vertical_t_right[4];
+vertical_t_right[0] = 0;
+vertical_t_right[1] = 5;
+vertical_t_right[2] = 6;
+vertical_t_right[3] = 10;

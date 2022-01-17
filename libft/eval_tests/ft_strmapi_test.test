@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/11 10:03:58 by mrantil           #+#    #+#             */
+/*   Updated: 2021/11/11 18:34:10 by mrantil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+#include <stdio.h>  // printf
+#include <string.h> // strdup
+#include <ctype.h>  // toupper/tolower
+
+int	ft_toupper(int c);
+int	ft_tolower(int c);
+ 
+void	ft_changetouporlow(unsigned int i, char *str)
+{
+	while (str[i] != '\0')
+	{
+		if (i % 2 == 0) 
+		 	str[i] = 'B';
+		i++;
+	}
+}
+ 
+char	ft_changeupper(unsigned int i, char c)
+{
+	if ((i % 2) == 0)
+		return (ft_toupper(c));
+	else
+		return (c);
+}
+ 
+void	alternate(unsigned int i, char *string)
+{
+	if ((i % 1) == 0)
+		string[i] = ft_toupper(string[i]);
+	else
+		string[i] = ft_tolower(string[i]);
+}
+ 
+int	main(void)
+{
+	char str[] = "helloworld";
+	char *arr;
+	arr = ft_strmapi(str, &ft_changeupper);
+ 
+	printf("%s <- changeupper every second letter (thanks to the _unsigned int i_)\n", arr);
+	
+
+
+	return (0);
+}
