@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pilot <pilot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:45 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/08 00:37:57 by pilot            ###   ########.fr       */
+/*   Updated: 2022/01/18 13:19:51 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ typedef struct s_index
 	int			i;
 }				t_ints3;
 
+typedef struct s_ll
+{
+	int			len;
+	char		letter;
+}				t_ints4;
+
 int		ft_read_file(int fd, char **copy_of_file);
 int		ft_verify_file(char *copy_of_file, char	**tetrominos);
 char	**ft_malloc_tetrominos(int count);
@@ -70,5 +76,7 @@ int		*ft_t_2(char **tetrominos, int i, int x, int add);
 int		*ft_l_2(char **tetrominos, int i, int x, int add);
 int		*ft_small_square(char **tetrominos, int i, int x, int add);
 int		*ft_i(char **tetrominos, int i, int x, int add);
+int		ft_side_total_six(char *tm);
+int		ft_side_total_eight(char *tm);
 
 #endif

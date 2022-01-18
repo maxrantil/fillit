@@ -1,31 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_side_total.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/18 13:22:25 by mrantil          ###   ########.fr       */
+/*   Created: 2022/01/18 13:06:44 by mrantil           #+#    #+#             */
+/*   Updated: 2022/01/18 13:07:09 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	main(int argc, char **argv)
+int	ft_side_total_eight(char *tm)
 {
-	int		fd;
-	char	*copy_of_file;
-	char	**tetrominos;
+	int	i;
 
-	if (argc == 2)
+	i = 0;
+	while (tm[i] != '\0')
 	{
-		fd = open(argv[1], O_RDONLY);
-		tetrominos = ft_malloc_tetrominos(ft_read_file(fd, &copy_of_file));
-		if (ft_verify_file(copy_of_file, tetrominos) == -1)
-			ft_putstr("error, file not valid\n");
-		ft_strdel(&copy_of_file);
-		ft_map_generator(tetrominos);
+		if (tm[i] == '2' || tm[i] == '.'
+			|| tm[i] == '\n')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	ft_side_total_six(char *tm)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (tm[i] != '\0')
+	{
+		if (tm[i] == '2')
+			count++;
+		else if (tm[i] == '3')
+			count = 2;
+		if (count == 2)
+			return (1);
+		i++;
 	}
 	return (0);
 }

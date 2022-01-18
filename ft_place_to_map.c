@@ -6,28 +6,33 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:34:49 by max               #+#    #+#             */
-/*   Updated: 2022/01/18 11:08:34 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/18 13:25:49 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_free_tm(char **tetrominos, int x)
+int	ft_free_tm(char **tetrominos, int x, char *map)
 {
+	ft_putstr(map);
 	while (x >= 0)
-	{
 		ft_strdel(&tetrominos[x--]);
-	}
+	ft_strdel(&map);
 	free(tetrominos);
+	return (1);
 }
 
-int	ft_validspot(int i, int len, int *ret, char *map)
+int	ft_validspot(int i, t_ints4 ll, int *ret, char *map)
 {
-	if (i + ret[0] < len && i + ret[1] < len
-		&& i + ret[2] < len && i + ret[3] < len
+	if (i + ret[0] < ll.len && i + ret[1] < ll.len
+		&& i + ret[2] < ll.len && i + ret[3] < ll.len
 		&& map[i + ret[0]] == '.' && map[i + ret[1]] == '.'
 		&& map[i + ret[2]] == '.' && map[i + ret[3]] == '.')
 	{
+		map[i + ret[0]] = ll.letter;
+		map[i + ret[1]] = ll.letter;
+		map[i + ret[2]] = ll.letter;
+		map[i + ret[3]] = ll.letter;
 		return (1);
 	}
 	else
@@ -37,35 +42,25 @@ int	ft_validspot(int i, int len, int *ret, char *map)
 int	ft_place_to_map(int x, int i, char *map, char **tetrominos)
 {
 	int			*ret;
-	int			len;
-	char		letter;
-	
+	t_ints4		ll;
+
 	if (x == -1)
 		x = 0;
 	if (tetrominos[x][0] == '\0')
-	{
-		ft_putstr(map);
-		ft_free_tm(tetrominos, x);
-		ft_strdel(&map);
-		return (1);
-	}
-	letter = 'A';
+		return (ft_free_tm(tetrominos, x, map));
+	ll.letter = 'A';
 	ret = ft_what_shape(tetrominos, map, x);
-	letter = letter + x;
+	ll.letter = ll.letter + x;
 	x++;
-	len = ft_strlen(map);
+	ll.len = ft_strlen(map);
 	while (map[i] != '\0')
 	{
-		if (ft_validspot(i, len, ret, map))
+		if (ft_validspot(i, ll, ret, map))
 		{
-			map[i + ret[0]] = letter;
-			map[i + ret[1]] = letter;
-			map[i + ret[2]] = letter;
-			map[i + ret[3]] = letter;
 			if (ft_place_to_map(x, 0, map, tetrominos))
 				return (1);
 			else
-				ft_clear_last(map, letter);
+				ft_clear_last(map, ll.letter);
 		}
 		i++;
 	}
