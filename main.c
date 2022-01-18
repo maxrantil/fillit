@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/18 14:04:41 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/18 16:57:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ char	**ft_malloc_tetrominos(int count)
 	int		i;
 	char	**tetrominos;
 
-	if (count == -1)
-		ft_putstr("error, reading failed, fd not valid\n");
+	if (count == -1 || count > 27)
+		return (NULL);
 	tetrominos = (char **)malloc(sizeof(char *) * count);
+	if (!tetrominos)
+		return (NULL);
 	i = 0;
 	while (i < count)
 	{
@@ -88,9 +90,9 @@ int	ft_verify_file(char *copy_of_file, char	**tetrominos)
 		return (-1);
 	ft_divide_pieces(copy_of_file, tetrominos);
 	if (ft_verify_pieces(tetrominos) == -1)
-		ft_putstr("error, piece not valid\n");
+		return (-1);
 	if (ft_verify_pieces_two(tetrominos) == -1)
-		ft_putstr("error, piece not valid\n");
+		return (-1);
 	return (0);
 }
 
@@ -98,16 +100,28 @@ int	main(int argc, char **argv)
 {
 	int		fd;
 	char	*copy_of_file;
-	char	**tetrominos;
+	char	**tm;
 
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
-		tetrominos = ft_malloc_tetrominos(ft_read_file(fd, &copy_of_file));
-		if (ft_verify_file(copy_of_file, tetrominos) == -1)
-			ft_putstr("error, file not valid\n");
+		if (fd == -1)
+			return (ft_errorfd());
+		tm = ft_malloc_tetrominos(ft_read_file(fd, &copy_of_file));
+		if (close(fd) == -1)
+			return (ft_errormain(copy_of_file));
+		if (tm == NULL || ft_verify_file(copy_of_file, tm) == -1)
+			return (ft_errormain(copy_of_file));
 		ft_strdel(&copy_of_file);
-		ft_map_generator(tetrominos);
+		ft_map_generator(tm);
+	}
+	else
+	{
+		ft_putstr("usage: \tamount of arguments is not 1\n");
+		return (1);
 	}
 	return (0);
 }
+
+// Error not valid or no Tetris file & we free something when error
+// folder, no segfault (maybe fixed itself :D) //leo run it again

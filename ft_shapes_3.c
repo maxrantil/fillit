@@ -5,12 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 19:27:02 by max               #+#    #+#             */
-/*   Updated: 2022/01/18 13:33:25 by mrantil          ###   ########.fr       */
+/*   Created: 2022/01/18 17:00:00 by mrantil           #+#    #+#             */
+/*   Updated: 2022/01/18 17:00:03 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int	ft_errorfd(void)
+{
+	ft_putstr("error\n");
+	return (1);
+}
+
+int	ft_errormain(char *copy_of_file)
+{
+	ft_putstr("error\n");
+	ft_strdel(&copy_of_file);
+	return (1);
+}
 
 int	*ft_error(void)
 {

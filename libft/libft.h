@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:44:24 by mrantil           #+#    #+#             */
-/*   Updated: 2021/11/25 14:57:35 by mrantil          ###   ########.fr       */
+/*   Updated: 2021/12/13 16:24:52 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef struct s_list
 
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_strsplit
+{
+	size_t			i;
+	size_t			index;
+	size_t			e;
+}					t_strsplit;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -92,7 +99,8 @@ void	ft_lstputnbr(t_list **alst);
 void	ft_lstaddend(t_list **alst, t_list *new);
 void	ft_lstputstr(t_list **alst);
 int		ft_isspace(const char *str);
-size_t	ft_count_c(char *s, int c);
+char	*ft_strcdup(const char *s1, int c, int n);
 int		ft_strclen(char *str, int c);
+char	*ft_strupdate(char *s1, const char *s2);
 
 #endif

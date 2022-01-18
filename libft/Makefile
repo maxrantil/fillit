@@ -1,5 +1,5 @@
 NAME = libft.a
-FLAGS = -Wall -Wextra -Werror # -Wpedantic -Wunused -Wconversion -Wunreachable-code -Wtype-limits
+FLAGS = -Wall -Wextra -Werror
 HEADER_PATH = libft.h
 C_FILES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 		  ft_itoa.c ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
@@ -10,7 +10,7 @@ C_FILES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit
 		  ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strsplit.c \
 		  ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c ft_lstnew.c ft_lstdelone.c \
 		  ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_intlen.c ft_lstcount.c ft_lstputnbr.c \
-		  ft_lstaddend.c ft_lstputstr.c ft_isspace.c ft_count_c.c ft_strclen.c
+		  ft_lstaddend.c ft_lstputstr.c ft_isspace.c ft_strcdup.c ft_strclen.c ft_strupdate.c
 O_FILES = $(C_FILES:.c=.o)
 
 all: $(NAME)
@@ -25,7 +25,7 @@ $(NAME):
 	@echo "███████╗██║██████╔╝██║        ██║"
 	@echo "╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝"   
 	@echo ""
-	@gcc $(FLAGS) -c $(C_FILES) $(HEADER_PATH)
+	@gcc $(FLAGS) -c $(C_FILES) -I $(HEADER_PATH)
 	@ar rc $(NAME) $(O_FILES) 
 	@echo "$(NAME) created"
 	@ranlib $(NAME)

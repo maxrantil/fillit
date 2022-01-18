@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:45 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/18 14:08:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/18 16:24:39 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ int		*ft_small_square(char **tetrominos, int i, int x, int add);
 int		*ft_i(char **tetrominos, int i, int x, int add);
 int		ft_side_total_six(char *tm);
 int		ft_side_total_eight(char *tm);
+int		ft_errormain(char *copy_of_file);
+int		ft_errorfd(void);
 
 #endif
