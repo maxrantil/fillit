@@ -6,13 +6,13 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/28 21:09:30 by mrantil           #+#    #+#              #
-#    Updated: 2022/01/10 13:52:42 by mrantil          ###   ########.fr        #
+#    Updated: 2022/01/18 14:09:26 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 SRCS = *.c # change later
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra #-Wpedantic -Wunused -Wconversion -Wunreachable-code -Wtype-limits
 LIBFT = -L libft -lft
 
 all: $(NAME)

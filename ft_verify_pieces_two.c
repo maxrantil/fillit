@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:49:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/18 13:07:01 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/18 13:31:06 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,33 @@ int	ft_verify_pieces_two(char **tm)
 			return (-1);
 		x++;
 		y = 0;
+	}
+	return (0);
+}
+
+int	ft_verify_pieces(char **tetrominos)
+{
+	t_ints3	index;
+
+	index.i = 0;
+	index.y = 0;
+	index.x = 0;
+	while (tetrominos[index.x][0] != '\0')
+	{
+		while (tetrominos[index.x][index.y] != '\0')
+		{
+			if (tetrominos[index.x][index.y] != '.'
+				&& tetrominos[index.x][index.y] != '#'
+				&& tetrominos[index.x][index.y] != '\n')
+				return (-1);
+			index.y++;
+		}
+		if (tetrominos[index.x][4] != '\n' || tetrominos[index.x][9] != '\n'
+			|| tetrominos[index.x][14] != '\n'
+			|| tetrominos[index.x][19] != '\0')
+			return (-1);
+		index.y = 0;
+		index.x++;
 	}
 	return (0);
 }

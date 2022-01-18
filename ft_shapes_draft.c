@@ -6,14 +6,11 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:27:42 by max               #+#    #+#             */
-/*   Updated: 2022/01/18 11:23:46 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/18 13:32:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int	*ft_l_2(char **tetrominos, int i, int x, int add);
-int	*ft_small_square(char **tetrominos, int i, int x, int add);
 
 int	*ft_l_1(char **tetrominos, int i, int x, int add)
 {

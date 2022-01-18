@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:34:49 by max               #+#    #+#             */
-/*   Updated: 2022/01/18 13:25:49 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/18 14:09:08 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_place_to_map(int x, int i, char *map, char **tetrominos)
 	ret = ft_what_shape(tetrominos, map, x);
 	ll.letter = ll.letter + x;
 	x++;
-	ll.len = ft_strlen(map);
+	ll.len = (int)ft_strlen(map);
 	while (map[i] != '\0')
 	{
 		if (ft_validspot(i, ll, ret, map))

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shapes_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:32:34 by max               #+#    #+#             */
-/*   Updated: 2022/01/17 19:33:45 by max              ###   ########.fr       */
+/*   Updated: 2022/01/18 13:35:26 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int	*ft_t_2(char **tetrominos, int i, int x, int add);
 
 int	*ft_t_1(char **tetrominos, int i, int x, int add)
 {

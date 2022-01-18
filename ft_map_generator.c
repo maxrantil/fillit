@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:13:43 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/18 11:22:43 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/18 13:59:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ size_t	ft_get_nl(char *map, int a)
 char	*ft_enlarge_map(char *map)
 {
 	int		y;
-	int		i;
+	size_t	i;
 	size_t	len;
-	int		counter;
+	size_t	counter;
 	char	*newmap;
 
 	i = ft_get_nl(map, 0);

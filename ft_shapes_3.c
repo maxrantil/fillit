@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shapes_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:27:02 by max               #+#    #+#             */
-/*   Updated: 2022/01/17 19:27:15 by max              ###   ########.fr       */
+/*   Updated: 2022/01/18 13:33:25 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,28 @@ int	*ft_error(void)
 	error[2] = 9;
 	error[3] = 9;
 	return (error);
+}
+
+int	*ft_small_square(char **tetrominos, int i, int x, int add)
+{
+	static int	square[4];
+
+	if (i == 2)
+		add = -2;
+	if (i == 3)
+		add = -1;
+	square[0] = 0;
+	square[1] = 1;
+	square[2] = 5 + add;
+	square[3] = 6 + add;
+	i = 0;
+	while (tetrominos[x][i] == '.' || tetrominos[x][i] == '\n')
+		i++;
+	if (tetrominos[x][i] == '2' && tetrominos[x][i + 1] == '2'
+		&& tetrominos[x][i + 5] == '2' && tetrominos[x][i + 6] == '2')
+		return (square);
+	else
+		return (ft_i(tetrominos, i, x, add));
 }
 
 int	*ft_t_2(char **tetrominos, int i, int x, int add)
