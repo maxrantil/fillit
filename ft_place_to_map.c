@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_place_to_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:34:49 by max               #+#    #+#             */
-/*   Updated: 2022/01/17 19:35:33 by max              ###   ########.fr       */
+/*   Updated: 2022/01/18 11:08:34 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ int	ft_validspot(int i, int len, int *ret, char *map)
 		&& map[i + ret[0]] == '.' && map[i + ret[1]] == '.'
 		&& map[i + ret[2]] == '.' && map[i + ret[3]] == '.')
 	{
-		map[i + ret[0]] = letter;
-		map[i + ret[1]] = letter;
-		map[i + ret[2]] = letter;
-		map[i + ret[3]] = letter;
 		return (1);
 	}
 	else
@@ -40,10 +36,10 @@ int	ft_validspot(int i, int len, int *ret, char *map)
 
 int	ft_place_to_map(int x, int i, char *map, char **tetrominos)
 {
-	int		*ret;
-	char	letter;
-	int		len;
-
+	int			*ret;
+	int			len;
+	char		letter;
+	
 	if (x == -1)
 		x = 0;
 	if (tetrominos[x][0] == '\0')
@@ -53,20 +49,19 @@ int	ft_place_to_map(int x, int i, char *map, char **tetrominos)
 		ft_strdel(&map);
 		return (1);
 	}
-	len = ft_strlen(map);
-	if (x == 0 && i == 1 + len)
-	{
-		map = ft_enlarge_map(map);
-		i = 0;
-	}
 	letter = 'A';
 	ret = ft_what_shape(tetrominos, map, x);
 	letter = letter + x;
 	x++;
+	len = ft_strlen(map);
 	while (map[i] != '\0')
 	{
 		if (ft_validspot(i, len, ret, map))
 		{
+			map[i + ret[0]] = letter;
+			map[i + ret[1]] = letter;
+			map[i + ret[2]] = letter;
+			map[i + ret[3]] = letter;
 			if (ft_place_to_map(x, 0, map, tetrominos))
 				return (1);
 			else

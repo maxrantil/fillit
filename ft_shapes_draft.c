@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shapes_draft.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:27:42 by max               #+#    #+#             */
-/*   Updated: 2022/01/17 19:27:45 by max              ###   ########.fr       */
+/*   Updated: 2022/01/18 11:23:46 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,29 +109,28 @@ int	*ft_i(char **tetrominos, int i, int x, int add)
 
 int	*ft_what_shape(char **tetrominos, char *map, int x)
 {
-	int	i;
-	int add;
-	//int	*square;
+	int			i;
+	int			add;
+	static int	square[4];
 
 	i = 0;
 	add = 0;
-	//square = (int *)malloc(sizeof(int) * 4);
 	while (map[i] != '\n')
 		i++;
+	if (i < 4)
+		return (ft_small_square(tetrominos, i, x, add));
 	if (i > 4)
 		add = i - 4;
-	//square[0] = 0;
-	//square[1] = 1;
-	//square[2] = 5 + add;
-	//square[3] = 6 + add;
+	square[0] = 0;
+	square[1] = 1;
+	square[2] = 5 + add;
+	square[3] = 6 + add;
 	i = 0;
 	while (tetrominos[x][i] == '.' || tetrominos[x][i] == '\n')
 		i++;
-	//if (tetrominos[x][i] == '2' && tetrominos[x][i + 1] == '2'
-	//	&& tetrominos[x][i + 5] == '2' && tetrominos[x][i + 6] == '2')
-	//	return (square);
-	if (i < 4)
-		return (ft_small_square(tetrominos, i, x, add));
+	if (tetrominos[x][i] == '2' && tetrominos[x][i + 1] == '2'
+		&& tetrominos[x][i + 5] == '2' && tetrominos[x][i + 6] == '2')
+		return (square);
 	else
 		return (ft_i(tetrominos, i, x, add));
 }

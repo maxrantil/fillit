@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_generator.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:13:43 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/17 19:34:16 by max              ###   ########.fr       */
+/*   Updated: 2022/01/18 11:22:43 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,31 +81,29 @@ char	*ft_enlarge_map(char *map)
 
 void	ft_map_generator(char **tetrominos)
 {
-	int		x;
-	int		i;
-	int		y;
-	int		counter;
+	t_ints3	ints;
 	char	*map;
 
-	x = 0;
-	y = 0;
-	while (tetrominos[x][y] != '\0')
-		x++;
-	i = 2;
-	while ((i * i) < (x * 4))
-		i++;
-	map = ft_strnew(i * i + i);
-	counter = 0;
-	while (y < (i * i + i))
+	ints.x = 0;
+	ints.y = 0;
+	while (tetrominos[ints.x][ints.y] != '\0')
+		ints.x++;
+	ints.i = 2;
+	while (ints.i * ints.i < ints.x * 4)
+		ints.i++;
+	map = ft_strnew(ints.i * ints.i + ints.i);
+	ints.x = 0;
+	while (ints.y < ints.i * ints.i + ints.i)
 	{
-		map[y] = '.';
-		counter++;
-		if (counter == i + 1)
+		map[ints.y] = '.';
+		ints.x++;
+		if (ints.x == ints.i + 1)
 		{
-			map[y] = '\n';
-			counter = 0;
+			map[ints.y] = '\n';
+			ints.x = 0;
 		}
-		y++;
+		ints.y++;
 	}
-	ft_place_to_map(0, 0, map, tetrominos);
+	while (0 == ft_place_to_map(0, 0, map, tetrominos))
+		map = ft_enlarge_map(map);
 }
