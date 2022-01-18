@@ -26,8 +26,6 @@ int	main(int argc, char **argv)
 			ft_putstr("error, file not valid\n");
 		ft_strdel(&copy_of_file);
 		ft_map_generator(tetrominos);
-		
-
 	}
 	return (0);
 }

@@ -60,16 +60,15 @@ int		ft_verify_pieces(char **tetrominos);
 int		ft_verify_pieces_two(char **tetrominos);
 void	ft_convert_pieces(char **tetrominos);
 void	ft_map_generator(char **tetrominos);
-int     ft_place_to_map(int x, int i, char *map, char **tetrominos);
+int		ft_place_to_map(int x, int i, char *map, char **tetrominos);
 int		*ft_what_shape(char **tetrominos, char *map, int x);
 size_t	ft_count_c(char *s, int c);
 char	*ft_clear_last(char *map, int c);
 size_t	ft_get_nl(char *map, int a);
 char	*ft_enlarge_map(char *map);
-int     *ft_t_2(char **tetrominos, int i, int x, int add);
-int     *ft_l_2(char **tetrominos, int i, int x, int add);
-int     *ft_small_square(char **tetrominos, int i, int x, int add);
-int     *ft_i(char **tetrominos, int i, int x, int add);
-
+int		*ft_t_2(char **tetrominos, int i, int x, int add);
+int		*ft_l_2(char **tetrominos, int i, int x, int add);
+int		*ft_small_square(char **tetrominos, int i, int x, int add);
+int		*ft_i(char **tetrominos, int i, int x, int add);
 
 #endif

@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_small_square.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/17 19:28:22 by max               #+#    #+#             */
+/*   Updated: 2022/01/17 19:28:34 by max              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
 int	*ft_small_square(char **tetrominos, int i, int x, int add)
 {
-
 	static int	square[4];
+
 	if (i == 2)
 		add = -2;
 	if (i == 3)
@@ -20,5 +31,5 @@ int	*ft_small_square(char **tetrominos, int i, int x, int add)
 		&& tetrominos[x][i + 5] == '2' && tetrominos[x][i + 6] == '2')
 		return (square);
 	else
-		return(ft_i(tetrominos, i, x, add));
+		return (ft_i(tetrominos, i, x, add));
 }

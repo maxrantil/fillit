@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_verify_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llonnrot <llonnrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 15:11:43 by llonnrot          #+#    #+#             */
-/*   Updated: 2021/12/30 15:19:43 by llonnrot         ###   ########.fr       */
+/*   Created: 2022/01/17 20:11:33 by mrantil           #+#    #+#             */
+/*   Updated: 2022/01/17 20:11:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_verify_file(char *copy_of_file, char	**tetrominos)
 	if (copy_of_file[ft_strlen(copy_of_file) - 1] != '\n')
 		return (-1);
 	if (copy_of_file[ft_strlen(copy_of_file) - 2] != '.'
-		 && copy_of_file[ft_strlen(copy_of_file) - 2] != '#')
+		&& copy_of_file[ft_strlen(copy_of_file) - 2] != '#')
 		return (-1);
 	ft_divide_pieces(copy_of_file, tetrominos);
 	if (ft_verify_pieces(tetrominos) == -1)

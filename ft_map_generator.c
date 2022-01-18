@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_generator.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pilot <pilot@student.42.fr>                +#+  +:+       +#+        */
+/*   By: max <max@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:13:43 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/13 10:31:48 by pilot            ###   ########.fr       */
+/*   Updated: 2022/01/17 19:34:16 by max              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "fillit.h"
 
 char	*ft_clear_last(char *map, int c)
 {
 	int	i;
-	int count;
+	int	count;
 
 	i = 0;
 	count = 4;
@@ -46,7 +45,7 @@ size_t	ft_get_nl(char *map, int a)
 		i++;
 	}
 	if (a == 1)
-		return((count * 2) - 1);
+		return ((count * 2) - 1);
 	else
 		return (count);
 }
@@ -82,16 +81,14 @@ char	*ft_enlarge_map(char *map)
 
 void	ft_map_generator(char **tetrominos)
 {
-	int x;
-	int i;
-	int y;
-	int add;
-	int counter;
-	char *map;
-	
+	int		x;
+	int		i;
+	int		y;
+	int		counter;
+	char	*map;
+
 	x = 0;
 	y = 0;
-	add = 0;
 	while (tetrominos[x][y] != '\0')
 		x++;
 	i = 2;
@@ -110,5 +107,5 @@ void	ft_map_generator(char **tetrominos)
 		}
 		y++;
 	}
-	ft_place_to_map(0, 0, map, tetrominos);	
+	ft_place_to_map(0, 0, map, tetrominos);
 }
