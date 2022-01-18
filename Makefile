@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/28 21:09:30 by mrantil           #+#    #+#              #
-#    Updated: 2022/01/18 16:45:37 by mrantil          ###   ########.fr        #
+#    Updated: 2022/01/18 17:21:51 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,18 @@ LIBFT = -L libft -lft
 all: $(NAME)
 
 $(NAME):
-	make -C libft
-	gcc $(FLAGS) $(SRCS) -o $(NAME) -I libft $(LIBFT)
+	@echo "Compiling..."
+	@make -C libft
+	@gcc $(FLAGS) $(SRCS) -o $(NAME) -I libft $(LIBFT)
 
 clean:
-	make -C libft clean
+	@echo "Cleaning object files..."
+	@make -C libft clean
 
 fclean: clean
-	make -C libft fclean
-	rm $(NAME)
+	@echo "Cleaning binary..."
+	@make -C libft fclean
+	@rm -f $(NAME)
 
 re: fclean all
 
