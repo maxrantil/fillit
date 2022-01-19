@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:46:46 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 13:25:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 13:33:14 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	*ft_z_1(char **tetrominos, int i, int x, int add)
 		return (ft_z_2(tetrominos, i, x, add));
 }
 
-static int	*ft_i(char **tetrominos, int i, int x, int add)
+int	*ft_i(char **tetrominos, int i, int x, int add)
 {
 	static int	vertical_i[4];
 	static int	horizontal_i[4];

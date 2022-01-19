@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:00:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 12:07:49 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 15:27:13 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,36 @@ int	ft_no_dots(char *copy_of_file)
 {
 	int	i;
 	int	c;
+	int	nl;
 
 	i = 0;
 	c = 0;
+	nl = 0;
 	while (copy_of_file[i] != '\0')
 	{
 		if (copy_of_file[i] == '.')
 			c++;
 		i++;
+		if ((copy_of_file[i] == '\n' && copy_of_file[i + 1] == '\n')
+			|| ft_strlen(copy_of_file) == 20)
+			nl++;
 	}
-	if (c == 0)
-		return (-1);
-	return (0);
+	if (c != 0 && nl != 0)
+		return (0);
+	return (-1);
 }
 
 int	ft_errorfd(void)
 {
 	ft_putstr("error\n");
-	return (1);
+	exit(1);
 }
 
 int	ft_errormain(char *copy_of_file)
 {
 	ft_putstr("error\n");
 	ft_strdel(&copy_of_file);
-	return (1);
+	exit(1);
 }
 
 int	*ft_small_map(char **tetrominos, int i, int x, int add)

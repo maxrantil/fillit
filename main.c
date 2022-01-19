@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/19 13:23:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 15:11:25 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_read_file(int fd, char **copy_of_file)
 		ft_bzero(pni.buffer, ft_strlen(pni.buffer));
 		pni.count++;
 	}
-	*copy_of_file = pni.temp3;
+	*copy_of_file = ft_strdup(pni.temp3);
 	ft_free_read(pni);
 	return (pni.count);
 }

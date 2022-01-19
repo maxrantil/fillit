@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:06:44 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 12:25:35 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 14:45:51 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int	ft_side_total_six(char *tm)
 void	ft_free_read(t_r_var pni)
 {
 	ft_strdel(&pni.temp2);
+	ft_strdel(&pni.temp3);
 	ft_strdel(&pni.buffer);
 }
