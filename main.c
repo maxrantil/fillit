@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/19 10:38:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 11:55:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	ft_read_file(int fd, char **copy_of_file)
 	pni.buffer = ft_strnew(BUFF_SIZE);
 	while (pni.readret)
 	{
-		if (pni.readret == -1)
+		if ((pni.readret != 0 && pni.readret != 1 && pni.readret != 20
+				&& pni.readret != 21) || pni.readret == -1)
 			return (-1);
 		pni.readret = read(fd, pni.buffer, BUFF_SIZE);
 		ft_strdel(&pni.temp2);
@@ -83,6 +84,8 @@ void	ft_divide_pieces(char *copy_of_file, char **tetrominos)
 
 int	ft_verify_file(char *copy_of_file, char	**tetrominos)
 {
+	if (ft_no_dots(copy_of_file) == -1)
+		return (-1);
 	if (copy_of_file[ft_strlen(copy_of_file) - 1] != '\n')
 		return (-1);
 	if (copy_of_file[ft_strlen(copy_of_file) - 2] != '.'

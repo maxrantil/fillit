@@ -6,11 +6,29 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:00:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 10:37:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 11:49:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int	ft_no_dots(char *copy_of_file)
+{
+	int	i;
+	int	c;
+
+	i = 0;
+	c = 0;
+	while (copy_of_file[i] != '\0')
+	{
+		if (copy_of_file[i] == '.')
+			c++;
+		i++;
+	}
+	if (c == 0)
+		return (-1);
+	return (0);
+}
 
 int	ft_errorfd(void)
 {

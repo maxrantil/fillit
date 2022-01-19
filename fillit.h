@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:45 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/19 10:35:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 11:48:13 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int		ft_side_total_six(char *tm);
 int		ft_side_total_eight(char *tm);
 int		ft_errormain(char *copy_of_file);
 int		ft_errorfd(void);
+int		ft_no_dots(char *copy_of_file);
 
 #endif
