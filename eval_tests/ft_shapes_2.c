@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:59:45 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/18 16:59:49 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 10:37:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ int	*ft_l_2(char **tetrominos, int i, int x, int add)
 
 	l_1r_2u[0] = 0;
 	l_1r_2u[1] = 5 + add;
-	l_1r_2u[2] = 10 + add + add;
-	l_1r_2u[3] = 11 + add + add;
+	l_1r_2u[2] = 10 + add * 2;
+	l_1r_2u[3] = 11 + add * 2;
 	l_1l_2d[0] = 0;
 	l_1l_2d[1] = 1;
 	l_1l_2d[2] = 6 + add;
-	l_1l_2d[3] = 11 + add + add;
+	l_1l_2d[3] = 11 + add * 2;
 	if (tetrominos[x][i] == '1' && tetrominos[x][i + 5] == '2'
 		&& tetrominos[x][i + 10] == '2' && tetrominos[x][i + 11] == '1')
 		return (l_1r_2u);

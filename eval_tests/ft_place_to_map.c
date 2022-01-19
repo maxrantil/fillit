@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:59:27 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/18 16:59:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 10:33:35 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	ft_place_to_map(int x, int i, char *map, char **tetrominos)
 	int			*ret;
 	t_ints4		ll;
 
-	if (x == -1)
-		x = 0;
 	if (tetrominos[x][0] == '\0')
 		return (ft_free_tm(tetrominos, x, map));
 	ll.letter = 'A';

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:46:46 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/18 16:46:50 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 10:36:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	*ft_l_1(char **tetrominos, int i, int x, int add)
 	l_1r_2d[0] = 0;
 	l_1r_2d[1] = 1;
 	l_1r_2d[2] = 5 + add;
-	l_1r_2d[3] = 10 + add + add;
+	l_1r_2d[3] = 10 + add * 2;
 	l_1l_2u[0] = 1;
 	l_1l_2u[1] = 6 + add;
-	l_1l_2u[2] = 10 + add + add;
-	l_1l_2u[3] = 11 + add + add;
+	l_1l_2u[2] = 10 + add * 2;
+	l_1l_2u[3] = 11 + add * 2;
 	if (tetrominos[x][i] == '2' && tetrominos[x][i + 1] == '1'
 		&& tetrominos[x][i + 5] == '2' && tetrominos[x][i + 10] == '1')
 		return (l_1r_2d);
@@ -66,11 +66,11 @@ int	*ft_z_1(char **tetrominos, int i, int x, int add)
 	z_vertical_left[0] = 0;
 	z_vertical_left[1] = 5 + add;
 	z_vertical_left[2] = 6 + add;
-	z_vertical_left[3] = 11 + add + add;
+	z_vertical_left[3] = 11 + add * 2;
 	z_vertical_right[0] = 1;
 	z_vertical_right[1] = 5 + add;
 	z_vertical_right[2] = 6 + add;
-	z_vertical_right[3] = 10 + add + add;
+	z_vertical_right[3] = 10 + add * 2;
 	if (tetrominos[x][i] == '1' && tetrominos[x][i + 5] == '2'
 		&& tetrominos[x][i + 6] == '2' && tetrominos[x][i + 11] == '1')
 		return (z_vertical_left);
@@ -88,8 +88,8 @@ int	*ft_i(char **tetrominos, int i, int x, int add)
 
 	vertical_i[0] = 0;
 	vertical_i[1] = 5 + add;
-	vertical_i[2] = 10 + add + add;
-	vertical_i[3] = 15 + add + (add * 2);
+	vertical_i[2] = 10 + add * 2;
+	vertical_i[3] = 15 + add * 3;
 	horizontal_i[0] = 0;
 	horizontal_i[1] = 1;
 	horizontal_i[2] = 2;
@@ -115,7 +115,7 @@ int	*ft_what_shape(char **tetrominos, char *map, int x)
 	while (map[i] != '\n')
 		i++;
 	if (i < 4)
-		return (ft_small_square(tetrominos, i, x, add));
+		return (ft_small_map(tetrominos, i, x, add));
 	if (i > 4)
 		add = i - 4;
 	square[0] = 0;

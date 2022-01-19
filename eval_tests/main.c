@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/18 16:57:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 10:38:36 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,23 @@ char	**ft_malloc_tetrominos(int count)
 	return (tetrominos);
 }
 
-void	ft_divide_pieces(char *pieces, char **tetrominos)
+void	ft_divide_pieces(char *copy_of_file, char **tetrominos)
 {
 	t_ints0	index;
 
 	index.i = 0;
 	index.x = 0;
 	index.y = 0;
-	index.len = ft_strlen(pieces);
+	index.len = ft_strlen(copy_of_file);
 	while (index.i < index.len)
 	{
-		if (pieces[index.i] == '\n' && pieces[index.i + 1] == '\n')
+		if (copy_of_file[index.i] == '\n' && copy_of_file[index.i + 1] == '\n')
 		{
 			index.i = index.i + 2;
 			index.x++;
 			index.y = 0;
 		}
-		tetrominos[index.x][index.y] = pieces[index.i];
+		tetrominos[index.x][index.y] = copy_of_file[index.i];
 		index.i++;
 		index.y++;
 	}
@@ -122,6 +122,3 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
-
-// Error not valid or no Tetris file & we free something when error
-// folder, no segfault (maybe fixed itself :D) //leo run it again
