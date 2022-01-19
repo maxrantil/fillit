@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:13:43 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/18 13:59:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 13:27:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_clear_last(char *map, int c)
 	return (map);
 }
 
-size_t	ft_get_nl(char *map, int a)
+static size_t	ft_get_nl(char *map, int a)
 {
 	int		i;
 	size_t	count;
@@ -50,7 +50,7 @@ size_t	ft_get_nl(char *map, int a)
 		return (count);
 }
 
-char	*ft_enlarge_map(char *map)
+static char	*ft_enlarge_map(char *map)
 {
 	int		y;
 	size_t	i;

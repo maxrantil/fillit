@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:59:45 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 10:37:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 13:25:49 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	*ft_t_1(char **tetrominos, int i, int x, int add)
+static int	*ft_t_1(char **tetrominos, int i, int x, int add)
 {
 	static int	t[4];
 	static int	flipped_t[4];
@@ -35,7 +35,7 @@ int	*ft_t_1(char **tetrominos, int i, int x, int add)
 		return (ft_t_2(tetrominos, i, x, add));
 }
 
-int	*ft_l_4(char **tetrominos, int i, int x, int add)
+static int	*ft_l_4(char **tetrominos, int i, int x, int add)
 {
 	static int	l_2r_1u[4];
 	static int	l_2l_1d[4];
@@ -58,7 +58,7 @@ int	*ft_l_4(char **tetrominos, int i, int x, int add)
 		return (ft_t_1(tetrominos, i, x, add));
 }
 
-int	*ft_l_3(char **tetrominos, int i, int x, int add)
+static int	*ft_l_3(char **tetrominos, int i, int x, int add)
 {
 	static int	l_2r_1d[4];
 	static int	l_2l_1u[4];

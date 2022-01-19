@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:49:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 13:07:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 13:23:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_cn(int x, int y, char **tm)
+static int	ft_cn(int x, int y, char **tm)
 {
 	if (tm[x][y] == '#' || tm[x][y] == '1'
 		|| tm[x][y] == '2' || tm[x][y] == '3')
@@ -21,7 +21,7 @@ int	ft_cn(int x, int y, char **tm)
 		return (0);
 }
 
-int	ft_sides_check(t_ints sides, char *tm)
+static int	ft_sides_check(t_ints sides, char *tm)
 {
 	if (sides.side_total == 6 || sides.side_total == 8)
 	{
@@ -33,7 +33,7 @@ int	ft_sides_check(t_ints sides, char *tm)
 	return (0);
 }
 
-int	ft_check(int x, int y, t_ints sides, char **tm)
+static int	ft_check(int x, int y, t_ints sides, char **tm)
 {
 	while (tm[x][y] != '\0')
 	{

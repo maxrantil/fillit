@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/19 12:30:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 13:23:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_read_file(int fd, char **copy_of_file)
+static int	ft_read_file(int fd, char **copy_of_file)
 {
 	t_r_var	pni;
 
@@ -41,7 +41,7 @@ int	ft_read_file(int fd, char **copy_of_file)
 	return (pni.count);
 }
 
-char	**ft_malloc_tetrominos(int count)
+static char	**ft_malloc_tetrominos(int count)
 {
 	int		i;
 	char	**tetrominos;
@@ -60,7 +60,7 @@ char	**ft_malloc_tetrominos(int count)
 	return (tetrominos);
 }
 
-void	ft_divide_pieces(char *copy_of_file, char **tetrominos)
+static void	ft_divide_pieces(char *copy_of_file, char **tetrominos)
 {
 	t_ints0	index;
 
@@ -83,7 +83,7 @@ void	ft_divide_pieces(char *copy_of_file, char **tetrominos)
 	tetrominos[index.x][index.y - 1] = '\0';
 }
 
-int	ft_verify_file(char *copy_of_file, char	**tetrominos)
+static int	ft_verify_file(char *copy_of_file, char	**tetrominos)
 {
 	if (ft_no_dots(copy_of_file) == -1)
 		return (-1);

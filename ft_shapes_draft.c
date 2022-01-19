@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:46:46 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 10:36:55 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 13:25:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	*ft_l_1(char **tetrominos, int i, int x, int add)
+static int	*ft_l_1(char **tetrominos, int i, int x, int add)
 {
 	static int	l_1r_2d[4];
 	static int	l_1l_2u[4];
@@ -35,7 +35,7 @@ int	*ft_l_1(char **tetrominos, int i, int x, int add)
 		return (ft_l_2(tetrominos, i, x, add));
 }
 
-int	*ft_z_2(char **tetrominos, int i, int x, int add)
+static int	*ft_z_2(char **tetrominos, int i, int x, int add)
 {
 	static int	z_horizontal_left[4];
 	static int	z_horizontal_right[4];
@@ -58,7 +58,7 @@ int	*ft_z_2(char **tetrominos, int i, int x, int add)
 		return (ft_l_1(tetrominos, i, x, add));
 }
 
-int	*ft_z_1(char **tetrominos, int i, int x, int add)
+static int	*ft_z_1(char **tetrominos, int i, int x, int add)
 {
 	static int	z_vertical_left[4];
 	static int	z_vertical_right[4];
@@ -81,7 +81,7 @@ int	*ft_z_1(char **tetrominos, int i, int x, int add)
 		return (ft_z_2(tetrominos, i, x, add));
 }
 
-int	*ft_i(char **tetrominos, int i, int x, int add)
+static int	*ft_i(char **tetrominos, int i, int x, int add)
 {
 	static int	vertical_i[4];
 	static int	horizontal_i[4];
