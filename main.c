@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/19 11:55:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 12:30:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,19 @@ int	ft_read_file(int fd, char **copy_of_file)
 	{
 		if ((pni.readret != 0 && pni.readret != 1 && pni.readret != 20
 				&& pni.readret != 21) || pni.readret == -1)
+		{
+			ft_free_read(pni);
 			return (-1);
+		}
 		pni.readret = read(fd, pni.buffer, BUFF_SIZE);
 		ft_strdel(&pni.temp2);
-		pni.temp2 = ft_strjoin(pni.temp3, pni.buffer);
-		ft_strdel(&pni.temp3);
+		pni.temp2 = ft_strupdate(pni.temp3, pni.buffer);
 		pni.temp3 = ft_strdup(pni.temp2);
 		ft_bzero(pni.buffer, ft_strlen(pni.buffer));
 		pni.count++;
 	}
 	*copy_of_file = pni.temp3;
-	ft_strdel(&pni.temp2);
-	ft_strdel(&pni.buffer);
+	ft_free_read(pni);
 	return (pni.count);
 }
 

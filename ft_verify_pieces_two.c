@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:49:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/18 15:44:01 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/19 13:07:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	ft_verify_pieces(char **tm)
 	ix.i = 0;
 	ix.y = 0;
 	ix.x = 0;
+	if (ft_strlen(tm[ix.x]) != 19)
+		return (-1);
 	while (tm[ix.x][0] != '\0')
 	{
 		while (tm[ix.x][ix.y] != '\0')
