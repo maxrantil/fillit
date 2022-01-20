@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/19 15:11:25 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/20 10:26:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,3 +126,7 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
+
+
+//memcpy memmove in lib ft = fix
+//
