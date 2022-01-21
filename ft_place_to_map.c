@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:59:27 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 13:26:42 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/21 11:18:26 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_free_tm(char **tetrominos, int x, char *map)
 	return (1);
 }
 
-static int	ft_validspot(int i, t_ints4 ll, int *ret, char *map)
+static int	ft_validspot(size_t i, t_struct ll, int *ret, char *map)
 {
 	if (i + ret[0] < ll.len && i + ret[1] < ll.len
 		&& i + ret[2] < ll.len && i + ret[3] < ll.len
@@ -42,7 +42,7 @@ static int	ft_validspot(int i, t_ints4 ll, int *ret, char *map)
 int	ft_place_to_map(int x, int i, char *map, char **tetrominos)
 {
 	int			*ret;
-	t_ints4		ll;
+	t_struct	ll;
 
 	if (tetrominos[x][0] == '\0')
 		return (ft_free_tm(tetrominos, x, map));

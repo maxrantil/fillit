@@ -16,7 +16,7 @@ O_FILES = $(C_FILES:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	@gcc $(FLAGS) -c $(C_FILES) -I $(HEADER_PATH)
+	@gcc $(FLAGS) -c $(C_FILES) $(HEADER_PATH)
 	@ar rc $(NAME) $(O_FILES) 
 	@ranlib $(NAME)
 	

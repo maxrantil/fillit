@@ -6,84 +6,50 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/20 10:26:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/21 14:55:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	ft_read_file(int fd, char **copy_of_file)
+static char	**malloc_and_set(int count, char *tm_buf)
 {
-	t_r_var	pni;
-
-	pni.count = 0;
-	pni.readret = 1;
-	pni.temp2 = ft_strnew(BUFF_SIZE);
-	pni.temp3 = ft_strnew(BUFF_SIZE);
-	pni.buffer = ft_strnew(BUFF_SIZE);
-	while (pni.readret)
-	{
-		if ((pni.readret != 0 && pni.readret != 1 && pni.readret != 20
-				&& pni.readret != 21) || pni.readret == -1)
-		{
-			ft_free_read(pni);
-			return (-1);
-		}
-		pni.readret = read(fd, pni.buffer, BUFF_SIZE);
-		ft_strdel(&pni.temp2);
-		pni.temp2 = ft_strupdate(pni.temp3, pni.buffer);
-		pni.temp3 = ft_strdup(pni.temp2);
-		ft_bzero(pni.buffer, ft_strlen(pni.buffer));
-		pni.count++;
-	}
-	*copy_of_file = ft_strdup(pni.temp3);
-	ft_free_read(pni);
-	return (pni.count);
-}
-
-static char	**ft_malloc_tetrominos(int count)
-{
-	int		i;
-	char	**tetrominos;
+	t_struct	i;
+	char		**tm_blocks;
 
 	if (count == -1 || count > 27)
 		return (NULL);
-	tetrominos = (char **)malloc(sizeof(char *) * count);
-	if (!tetrominos)
+	tm_blocks = (char **)malloc(sizeof(char *) * count);
+	if (!tm_blocks)
 		return (NULL);
-	i = 0;
-	while (i < count)
+	i.i = 0;
+	i.len = ft_strlen(tm_buf);
+	while (count--)
+		tm_blocks[i.i++] = ft_strnew(BUFF_SIZE);
+	while (i.t < i.len)
 	{
-		tetrominos[i] = ft_strnew(BUFF_SIZE);
-		i++;
-	}
-	return (tetrominos);
-}
-
-static void	ft_divide_pieces(char *copy_of_file, char **tetrominos)
-{
-	t_ints0	index;
-
-	index.i = 0;
-	index.x = 0;
-	index.y = 0;
-	index.len = ft_strlen(copy_of_file);
-	while (index.i < index.len)
-	{
-		if (copy_of_file[index.i] == '\n' && copy_of_file[index.i + 1] == '\n')
+		if (tm_buf[i.t] == '\n' && tm_buf[i.t + 1] == '\n')
 		{
-			index.i = index.i + 2;
-			index.x++;
-			index.y = 0;
+			i.t = i.t + 2;
+			i.x++;
+			i.y = 0;
 		}
-		tetrominos[index.x][index.y] = copy_of_file[index.i];
-		index.i++;
-		index.y++;
+	tm_blocks[i.x][i.y++] = tm_buf[i.t++];
 	}
-	tetrominos[index.x][index.y - 1] = '\0';
+	tm_blocks[i.x][i.y - 1] = '\0';
+	return (tm_blocks);
 }
 
-static int	ft_verify_file(char *copy_of_file, char	**tetrominos)
+static int	verify_pieces(char	**tetrominos)
+{
+	if (ft_verify_pieces(tetrominos) == -1)
+		return (-1);
+	if (ft_verify_pieces_two(tetrominos) == -1)
+		return (-1);
+	return (0);
+}
+
+static int	verify_file(char *copy_of_file)
 {
 	if (ft_no_dots(copy_of_file) == -1)
 		return (-1);
@@ -92,12 +58,35 @@ static int	ft_verify_file(char *copy_of_file, char	**tetrominos)
 	if (copy_of_file[ft_strlen(copy_of_file) - 2] != '.'
 		&& copy_of_file[ft_strlen(copy_of_file) - 2] != '#')
 		return (-1);
-	ft_divide_pieces(copy_of_file, tetrominos);
-	if (ft_verify_pieces(tetrominos) == -1)
-		return (-1);
-	if (ft_verify_pieces_two(tetrominos) == -1)
-		return (-1);
 	return (0);
+}
+
+static int	ft_read_file(int fd, char **copy_of_file)
+{
+	t_struct	r;
+	char		read_buf[BUFF_SIZE + 1];
+
+	r.read_ret = 1;
+	r.count = 0;
+	r.tm_buf = ft_strnew(BUFF_SIZE);
+	while (r.read_ret)
+	{
+		if ((r.read_ret != 0 && r.read_ret != 1 && r.read_ret != 20
+				&& r.read_ret != 21) || r.read_ret == -1)
+		{
+			ft_strdel(&r.tm_buf);
+			return (-1);
+		}
+		r.read_ret = read(fd, read_buf, BUFF_SIZE);
+		read_buf[r.read_ret] = '\0';
+		r.tm_buf = ft_strupdate(r.tm_buf, read_buf);
+		r.count++;
+	}
+	*copy_of_file = ft_strdup(r.tm_buf);
+	ft_strdel(&r.tm_buf);
+	if (verify_file(*copy_of_file) == -1)
+		return (ft_errormain(*copy_of_file));
+	return (r.count);
 }
 
 int	main(int argc, char **argv)
@@ -111,22 +100,16 @@ int	main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
 			return (ft_errorfd());
-		tm = ft_malloc_tetrominos(ft_read_file(fd, &copy_of_file));
-		if (close(fd) == -1)
-			return (ft_errormain(copy_of_file));
-		if (tm == NULL || ft_verify_file(copy_of_file, tm) == -1)
+		tm = malloc_and_set(ft_read_file(fd, &copy_of_file), copy_of_file);
+		if (tm == NULL || close(fd) == -1 || verify_pieces(tm) == -1)
 			return (ft_errormain(copy_of_file));
 		ft_strdel(&copy_of_file);
 		ft_map_generator(tm);
 	}
 	else
 	{
-		ft_putstr("usage: \tamount of arguments is not 1\n");
+		ft_putstr("usage: \t./fillit <file>\n");
 		return (1);
 	}
 	return (0);
 }
-
-
-//memcpy memmove in lib ft = fix
-//

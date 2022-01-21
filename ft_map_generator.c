@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:13:43 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/19 13:27:28 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/21 11:12:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ static char	*ft_enlarge_map(char *map)
 
 void	ft_map_generator(char **tetrominos)
 {
-	t_ints3	ints;
-	char	*map;
+	t_struct	ints;
+	char		*map;
 
 	ints.x = 0;
 	ints.y = 0;

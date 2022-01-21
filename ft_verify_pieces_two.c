@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:49:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 13:23:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/21 11:10:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_cn(int x, int y, char **tm)
 		return (0);
 }
 
-static int	ft_sides_check(t_ints sides, char *tm)
+static int	ft_sides_check(t_struct sides, char *tm)
 {
 	if (sides.side_total == 6 || sides.side_total == 8)
 	{
@@ -33,7 +33,7 @@ static int	ft_sides_check(t_ints sides, char *tm)
 	return (0);
 }
 
-static int	ft_check(int x, int y, t_ints sides, char **tm)
+static int	ft_check(int x, int y, t_struct sides, char **tm)
 {
 	while (tm[x][y] != '\0')
 	{
@@ -60,32 +60,30 @@ static int	ft_check(int x, int y, t_ints sides, char **tm)
 
 int	ft_verify_pieces_two(char **tm)
 {
-	t_ints	sides;
-	int		x;
-	int		y;
+	t_struct	sides;
 
-	x = 0;
-	y = 0;
+	sides.x = 0;
+	sides.y = 0;
 	sides.sides = 0;
 	sides.side_total = 0;
-	while (tm[x][0] != '\0')
+	while (tm[sides.x][0] != '\0')
 	{
-		sides.side_total = ft_check(x, y, sides, tm);
+		sides.side_total = ft_check(sides.x, sides.y, sides, tm);
 		if (sides.side_total == -1)
 			return (-1);
-		if (ft_sides_check(sides, tm[x]) == 1)
+		if (ft_sides_check(sides, tm[sides.x]) == 1)
 			sides.side_total = 0;
 		else
 			return (-1);
-		x++;
-		y = 0;
+		sides.x++;
+		sides.y = 0;
 	}
 	return (0);
 }
 
 int	ft_verify_pieces(char **tm)
 {
-	t_ints3	ix;
+	t_struct	ix;
 
 	ix.i = 0;
 	ix.y = 0;
