@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/21 14:55:01 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/21 15:20:05 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	**malloc_and_set(int count, char *tm_buf)
 			i.x++;
 			i.y = 0;
 		}
-	tm_blocks[i.x][i.y++] = tm_buf[i.t++];
+		tm_blocks[i.x][i.y++] = tm_buf[i.t++];
 	}
 	tm_blocks[i.x][i.y - 1] = '\0';
 	return (tm_blocks);
