@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:44:24 by mrantil           #+#    #+#             */
-/*   Updated: 2021/12/13 16:24:52 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/24 14:38:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,7 @@ int		ft_isspace(const char *str);
 char	*ft_strcdup(const char *s1, int c, int n);
 int		ft_strclen(char *str, int c);
 char	*ft_strupdate(char *s1, const char *s2);
+int		ft_imin(int a, int b);
+int		ft_imax(int a, int b);
 
 #endif
