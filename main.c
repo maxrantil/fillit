@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:08 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/21 15:20:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/25 19:08:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ static char	**malloc_and_set(int count, char *tm_buf)
 	i.len = ft_strlen(tm_buf);
 	while (count--)
 		tm_blocks[i.i++] = ft_strnew(BUFF_SIZE);
+	i.t = 0;
+	i.y = 0;
+	i.x = 0;
 	while (i.t < i.len)
 	{
 		if (tm_buf[i.t] == '\n' && tm_buf[i.t + 1] == '\n')
