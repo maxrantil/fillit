@@ -6,11 +6,25 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:59:27 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/21 16:03:50 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 14:38:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+static char	*ft_clear_last(int i, int count, char *map, int c)
+{
+	while (count)
+	{
+		if (map[i] == c)
+		{
+			map[i] = '.';
+			count--;
+		}
+		i++;
+	}
+	return (map);
+}
 
 static int	ft_free_tm(char **tetrominos, int x, char *map)
 {
@@ -58,7 +72,7 @@ int	ft_place_to_map(int x, int i, char *map, char **tetrominos)
 			if (ft_place_to_map(x, 0, map, tetrominos))
 				return (1);
 			else
-				ft_clear_last(map, ll.letter);
+				ft_clear_last(0, 4, map, ll.letter);
 		}
 		i++;
 	}
