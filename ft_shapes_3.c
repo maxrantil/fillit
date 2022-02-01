@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:00:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/21 12:34:41 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 13:19:14 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_no_dots(char *copy_of_file)
+int	no_dots(char *copy_of_file)
 {
 	int	i;
 	int	c;
@@ -35,13 +35,13 @@ int	ft_no_dots(char *copy_of_file)
 	return (-1);
 }
 
-int	ft_errorfd(void)
+int	error_fd(void)
 {
 	ft_putstr("error\n");
 	exit(1);
 }
 
-int	ft_errormain(char *copy_of_file)
+int	error_main(char *copy_of_file)
 {
 	ft_putstr("error\n");
 	ft_strdel(&copy_of_file);

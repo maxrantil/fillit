@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_generator.c                                 :+:      :+:    :+:   */
+/*   map_generator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:13:43 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/01/21 16:03:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 13:24:02 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static char	*ft_enlarge_map(char *map)
 	return (newmap);
 }
 
-void	ft_map_generator(char **tetrominos)
+void	map_generator(char **tetrominos)
 {
 	t_struct	ints;
 	char		*map;
