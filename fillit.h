@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:37:45 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/02/01 15:56:34 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 17:48:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct s_struct
 	char		letter;
 }				t_struct;
 
+typedef struct s_char_ptr
+{
+	char		*map;
+	char		**tm;
+}				t_char_ptr;
+
 //error handling
 int		error_main(char *copy_of_file);
 int		error_fd(void);
@@ -37,17 +43,14 @@ char	**malloc_tm(int i, int count, char *tm_buf);
 int		verify_pieces(char	**tetrominos);
 int		verify_pieces_one(int y, int x, char **tetrominos);
 int		verify_pieces_two(int x, int y, int sides_total, char **tm);
+int		side_total_six(char *tm);
+int		side_total_eight(char *tm);
 
-//generate map
+//generate map & place to map
 void	map_generator(int i, int x, int y, char **tm);
-
-int		place_to_map(int i, int x, char *map, char **tm);
-int		*ft_what_shape(char **tetrominos, char *map, int x);
-int		*ft_t_2(char **tetrominos, int i, int x, int add);
-int		*ft_l_2(char **tetrominos, int i, int x, int add);
-int		*ft_small_map(char **tetrominos, int i, int x, int add);
-int		*ft_i(char **tetrominos, int i, int x, int add);
-int		ft_side_total_six(char *tm);
-int		ft_side_total_eight(char *tm);
+int		place_to_map(int i, int x, t_char_ptr ptr, int *ret);
+int		*what_shape(t_char_ptr ptr, int x);
+int		*tm_l_1(char **tetrominos, int i, int x, int add);
+int		*tm_t_2(char **tetrominos, int i, int x, int add);
 
 #endif

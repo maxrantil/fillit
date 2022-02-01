@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 19:49:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/01 14:14:03 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:42:50 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static int	sides_check(int sides_total, char *tm)
 	if (sides_total == 6 || sides_total == 8)
 	{
 		if (sides_total == 8)
-			return (ft_side_total_eight(tm));
+			return (side_total_eight(tm));
 		else if (sides_total == 6)
-			return (ft_side_total_six(tm));
+			return (side_total_six(tm));
 	}
 	return (0);
 }

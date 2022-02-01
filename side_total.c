@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_side_total.c                                    :+:      :+:    :+:   */
+/*   side_total.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:06:44 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/21 12:34:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:37:08 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_side_total_eight(char *tm)
+int	side_total_eight(char *tm)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ int	ft_side_total_eight(char *tm)
 	return (1);
 }
 
-int	ft_side_total_six(char *tm)
+int	side_total_six(char *tm)
 {
 	int	i;
 	int	count;

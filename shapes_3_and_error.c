@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_shapes_3.c                                      :+:      :+:    :+:   */
+/*   shapes_3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:00:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/01 13:19:14 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:34:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,7 @@ int	error_main(char *copy_of_file)
 	exit(1);
 }
 
-int	*ft_small_map(char **tetrominos, int i, int x, int add)
-{
-	static int	square[4];
-
-	if (i == 2)
-		add = -2;
-	if (i == 3)
-		add = -1;
-	square[0] = 0;
-	square[1] = 1;
-	square[2] = 5 + add;
-	square[3] = 6 + add;
-	i = 0;
-	while (tetrominos[x][i] == '.' || tetrominos[x][i] == '\n')
-		i++;
-	if (tetrominos[x][i] == '2' && tetrominos[x][i + 1] == '2'
-		&& tetrominos[x][i + 5] == '2' && tetrominos[x][i + 6] == '2')
-		return (square);
-	else
-		return (ft_i(tetrominos, i, x, add));
-}
-
-int	*ft_t_2(char **tetrominos, int i, int x, int add)
+int	*tm_t_2(char **tetrominos, int i, int x, int add)
 {
 	static int	vertical_t_left[4];
 	static int	vertical_t_right[4];

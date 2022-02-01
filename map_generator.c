@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:13:43 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/02/01 15:56:17 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 17:49:00 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,27 @@ static char	*enlarge_map(int y, size_t counter, char *map)
 
 void	map_generator(int i, int x, int y, char **tm)
 {
-	char		*map;
+	t_char_ptr	ptr;
 
-	while (tm[x][y] != '\0')
+	ptr.tm = tm;
+	while (ptr.tm[x][y] != '\0')
 		x++;
 	i = 2;
 	while (i * i < x * 4)
 		i++;
-	map = ft_strnew(i * i + i);
+	ptr.map = ft_strnew(i * i + i);
 	x = 0;
 	while (y < i * i + i)
 	{
-		map[y] = '.';
+		ptr.map[y] = '.';
 		x++;
 		if (x == i + 1)
 		{
-			map[y] = '\n';
+			ptr.map[y] = '\n';
 			x = 0;
 		}
 		y++;
 	}
-	while (0 == place_to_map(0, 0, map, tm))
-		map = enlarge_map(0, 0, map);
+	while (0 == place_to_map(0, 0, ptr, what_shape(ptr, x)))
+		ptr.map = enlarge_map(0, 0, ptr.map);
 }

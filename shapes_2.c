@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_shapes_2.c                                      :+:      :+:    :+:   */
+/*   shapes_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:59:45 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/19 13:25:49 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:39:15 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	*ft_t_1(char **tetrominos, int i, int x, int add)
+static int	*tm_t_1(char **tetrominos, int i, int x, int add)
 {
 	static int	t[4];
 	static int	flipped_t[4];
@@ -32,10 +32,10 @@ static int	*ft_t_1(char **tetrominos, int i, int x, int add)
 		&& tetrominos[x][i + 5] == '3' && tetrominos[x][i + 6] == '1')
 		return (flipped_t);
 	else
-		return (ft_t_2(tetrominos, i, x, add));
+		return (tm_t_2(tetrominos, i, x, add));
 }
 
-static int	*ft_l_4(char **tetrominos, int i, int x, int add)
+static int	*tm_l_4(char **tetrominos, int i, int x, int add)
 {
 	static int	l_2r_1u[4];
 	static int	l_2l_1d[4];
@@ -55,10 +55,10 @@ static int	*ft_l_4(char **tetrominos, int i, int x, int add)
 		&& tetrominos[x][i + 2] == '2' && tetrominos[x][i + 7] == '1')
 		return (l_2l_1d);
 	else
-		return (ft_t_1(tetrominos, i, x, add));
+		return (tm_t_1(tetrominos, i, x, add));
 }
 
-static int	*ft_l_3(char **tetrominos, int i, int x, int add)
+static int	*tm_l_3(char **tetrominos, int i, int x, int add)
 {
 	static int	l_2r_1d[4];
 	static int	l_2l_1u[4];
@@ -78,10 +78,10 @@ static int	*ft_l_3(char **tetrominos, int i, int x, int add)
 		&& tetrominos[x][i + 4] == '2' && tetrominos[x][i + 5] == '2')
 		return (l_2l_1u);
 	else
-		return (ft_l_4(tetrominos, i, x, add));
+		return (tm_l_4(tetrominos, i, x, add));
 }
 
-int	*ft_l_2(char **tetrominos, int i, int x, int add)
+static int	*tm_l_2(char **tetrominos, int i, int x, int add)
 {
 	static int	l_1r_2u[4];
 	static int	l_1l_2d[4];
@@ -101,5 +101,28 @@ int	*ft_l_2(char **tetrominos, int i, int x, int add)
 		&& tetrominos[x][i + 6] == '2' && tetrominos[x][i + 11] == '1')
 		return (l_1l_2d);
 	else
-		return (ft_l_3(tetrominos, i, x, add));
+		return (tm_l_3(tetrominos, i, x, add));
+}
+
+int	*tm_l_1(char **tetrominos, int i, int x, int add)
+{
+	static int	l_1r_2d[4];
+	static int	l_1l_2u[4];
+
+	l_1r_2d[0] = 0;
+	l_1r_2d[1] = 1;
+	l_1r_2d[2] = 5 + add;
+	l_1r_2d[3] = 10 + add * 2;
+	l_1l_2u[0] = 1;
+	l_1l_2u[1] = 6 + add;
+	l_1l_2u[2] = 10 + add * 2;
+	l_1l_2u[3] = 11 + add * 2;
+	if (tetrominos[x][i] == '2' && tetrominos[x][i + 1] == '1'
+		&& tetrominos[x][i + 5] == '2' && tetrominos[x][i + 10] == '1')
+		return (l_1r_2d);
+	else if (tetrominos[x][i] == '1' && tetrominos[x][i + 5] == '2'
+		&& tetrominos[x][i + 9] == '1' && tetrominos[x][i + 10] == '2')
+		return (l_1l_2u);
+	else
+		return (tm_l_2(tetrominos, i, x, add));
 }

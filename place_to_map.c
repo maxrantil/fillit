@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:59:27 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/01 15:56:25 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 17:48:35 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,30 +49,27 @@ static int	validspot(size_t i, t_struct ll, int *ret, char *map)
 		map[i + ret[3]] = ll.letter;
 		return (1);
 	}
-	else
-		return (0);
+	return (0);
 }
 
-int	place_to_map(int i, int x, char *map, char **tm)
+int	place_to_map(int i, int x, t_char_ptr ptr, int *ret)
 {
 	t_struct	ll;
-	int			*ret;
 
-	if (tm[x][0] == '\0')
-		return (free_tm_and_ret(tm, x, map));
-	ret = ft_what_shape(tm, map, x);
+	if (ptr.tm[x][0] == '\0')
+		return (free_tm_and_ret(ptr.tm, x, ptr.map));
 	ll.letter = 'A';
 	ll.letter += x;
-	ll.len = (int)ft_strlen(map);
+	ll.len = (int)ft_strlen(ptr.map);
 	x++;
-	while (map[i] != '\0')
+	while (ptr.map[i] != '\0')
 	{
-		if (validspot(i, ll, ret, map))
+		if (validspot(i, ll, ret, ptr.map))
 		{
-			if (place_to_map(0, x, map, tm))
+			if (place_to_map(0, x, ptr, what_shape(ptr, x)))
 				return (1);
 			else
-				ft_clear_last(0, 4, map, ll.letter);
+				ft_clear_last(0, 4, ptr.map, ll.letter);
 		}
 		i++;
 	}
