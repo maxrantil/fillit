@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_place_to_map.c                                  :+:      :+:    :+:   */
+/*   place_to_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:59:27 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/01 14:38:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:56:25 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*ft_clear_last(int i, int count, char *map, int c)
 	return (map);
 }
 
-static int	ft_free_tm(char **tetrominos, int x, char *map)
+static int	free_tm_and_ret(char **tetrominos, int x, char *map)
 {
 	ft_putstr(map);
 	while (x >= 0)
@@ -36,7 +36,7 @@ static int	ft_free_tm(char **tetrominos, int x, char *map)
 	return (1);
 }
 
-static int	ft_validspot(size_t i, t_struct ll, int *ret, char *map)
+static int	validspot(size_t i, t_struct ll, int *ret, char *map)
 {
 	if (i + ret[0] < ll.len && i + ret[1] < ll.len
 		&& i + ret[2] < ll.len && i + ret[3] < ll.len
@@ -53,23 +53,23 @@ static int	ft_validspot(size_t i, t_struct ll, int *ret, char *map)
 		return (0);
 }
 
-int	ft_place_to_map(int x, int i, char *map, char **tetrominos)
+int	place_to_map(int i, int x, char *map, char **tm)
 {
-	int			*ret;
 	t_struct	ll;
+	int			*ret;
 
-	if (tetrominos[x][0] == '\0')
-		return (ft_free_tm(tetrominos, x, map));
+	if (tm[x][0] == '\0')
+		return (free_tm_and_ret(tm, x, map));
+	ret = ft_what_shape(tm, map, x);
 	ll.letter = 'A';
-	ret = ft_what_shape(tetrominos, map, x);
 	ll.letter += x;
-	x++;
 	ll.len = (int)ft_strlen(map);
+	x++;
 	while (map[i] != '\0')
 	{
-		if (ft_validspot(i, ll, ret, map))
+		if (validspot(i, ll, ret, map))
 		{
-			if (ft_place_to_map(x, 0, map, tetrominos))
+			if (place_to_map(0, x, map, tm))
 				return (1);
 			else
 				ft_clear_last(0, 4, map, ll.letter);

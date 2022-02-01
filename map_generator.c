@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 11:13:43 by llonnrot          #+#    #+#             */
-/*   Updated: 2022/02/01 14:39:06 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:56:17 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ static char	*enlarge_map(int y, size_t counter, char *map)
 	return (newmap);
 }
 
-void	map_generator(int i, int x, int y, char **tetrominos)
+void	map_generator(int i, int x, int y, char **tm)
 {
-	char	*map;
+	char		*map;
 
-	while (tetrominos[x][y] != '\0')
+	while (tm[x][y] != '\0')
 		x++;
 	i = 2;
 	while (i * i < x * 4)
@@ -69,6 +69,6 @@ void	map_generator(int i, int x, int y, char **tetrominos)
 		}
 		y++;
 	}
-	while (0 == ft_place_to_map(0, 0, map, tetrominos))
+	while (0 == place_to_map(0, 0, map, tm))
 		map = enlarge_map(0, 0, map);
 }

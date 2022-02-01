@@ -6,13 +6,13 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/28 21:09:30 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/01 13:34:04 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/01 15:48:51 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
-SRCS = main.c read_malloc_set.c map_generator.c ft_place_to_map.c ft_shapes_2.c \
-	ft_shapes_3.c ft_shapes_draft.c ft_side_total.c verify_pieces.c
+SRCS = main.c read_malloc_set.c map_generator.c place_to_map.c shapes_2.c \
+	shapes_3.c shapes_draft.c side_total.c verify_pieces.c
 FLAGS = -Wall -Werror -Wextra
 LIBFT = -L libft -lft
 
